@@ -4,32 +4,54 @@ namespace App\Classes;
 
 class Parser
 {
+    const LOCALE_ES = 'es';
+    const LOCALE_XX = 'xx';
+    
+    const PLURAL_ENDING = [
+        self::LOCALE_ES => 'S',
+        self::LOCALE_XX => 'X'
+    ];
+
     /**
      * @param string $string
+     * @param string $locale
      * @return array
      */
-    public function parse($string)
+    public function parse($string, $locale = self::LOCALE_ES)
     {
         $result = [];
 
         foreach (explode(' ', $string) as $word) {
-            $result[] = $this->normalize($word);
+            $result[] = $this->normalize($word, $locale);
         }
 
         return $result;
     }
 
-    private function normalize($string)
+    /**
+     * @param string $string
+     * @param string $locale
+     * @return array
+     */
+    private function normalize($string, $locale)
     {
-        $noAccentsString = $this->removeAccents($string);
-        $noSpecialCharsString = $this->removeSpecialChars($noAccentsString);
-        $upperCaseString = strtoupper($noSpecialCharsString);
+        $noAccentsString = $this->removeAccents($string, $locale);
+        $upperCaseString = mb_strtoupper($noAccentsString);
 
-        return $this->toSingle($upperCaseString);
+        return $this->toSingle($upperCaseString, $locale);
     }
 
-    private function removeAccents($string)
+    /**
+     * @param string $string
+     * @param string $locale
+     * @return string
+     */
+    private function removeAccents($string, $locale)
     {
+        if ($locale !== self::LOCALE_ES) {
+            return $string;
+        }
+
         $originalChars = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
         $editedChars = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
         $string = utf8_decode($string);
@@ -39,17 +61,12 @@ class Parser
         return utf8_encode($string);
     }
 
-    private function removeSpecialChars($string)
-    {
-        return preg_replace('/[^A-Za-z0-9\-]/', '', $string);
-    }
-
     /**
-     * @param $word
+     * @param string $word
      * @return array
      */
-    private function toSingle($word)
+    private function toSingle($word, $locale)
     {
-        return rtrim($word, 'S');
+        return rtrim($word, self::PLURAL_ENDING[$locale]);
     }
 }

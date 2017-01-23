@@ -33,7 +33,7 @@ class ParserTest extends TestCase
      */
     public function accepts_multi_words()
     {
-        $this->assertSame(
+        $this->assertEquals(
             ['COCINERO', 'FONTANERO'],
             $this->parser->parse('cocinero fontanero')
         );
@@ -42,33 +42,44 @@ class ParserTest extends TestCase
     /**
      * @test
      */
-    public function removes_accents_from_words()
+    public function removes_accents_from_words_for_locale_es()
     {
         $this->assertEquals(
             'COCINERO',
-            $this->parser->parse('cócinero')[0]
+            $this->parser->parse('cócinero', Parser::LOCALE_ES)[0]
         );
     }
 
     /**
      * @test
      */
-    public function removes_plural_endings_from_words()
+    public function removes_accents_from_words_for_locale_xx()
     {
         $this->assertEquals(
-            'COCINERO',
-            $this->parser->parse('cocineros')[0]
+            'CÓCINERO',
+            $this->parser->parse('cócinero', Parser::LOCALE_XX)[0]
         );
     }
 
     /**
      * @test
      */
-    public function removes_special_chars()
+    public function removes_plural_endings_from_words_for_locale_es()
     {
         $this->assertEquals(
             'COCINERO',
-            $this->parser->parse('coci(nero#*')[0]
+            $this->parser->parse('cocineros', Parser::LOCALE_ES)[0]
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function removes_plural_endings_from_words_for_locale_xx()
+    {
+        $this->assertEquals(
+            'COCINERO',
+            $this->parser->parse('cocinerox', Parser::LOCALE_XX)[0]
         );
     }
 }
