@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Tests;
 
 class EncriptadorTest extends \PHPUnit\Framework\TestCase
 {
