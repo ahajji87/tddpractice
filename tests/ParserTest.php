@@ -3,6 +3,7 @@
 namespace App\Tests;
 
 use App\Classes\Parser;
+use App\Classes\RemoveAccentFactory;
 use PHPUnit\Framework\TestCase;
 
 class ParserTest extends TestCase
@@ -14,7 +15,7 @@ class ParserTest extends TestCase
     {
         parent::setUp();
 
-        $this->parser = new Parser();
+        $this->parser = new Parser(new RemoveAccentFactory());
     }
 
     /**

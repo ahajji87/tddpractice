@@ -11,6 +11,13 @@ class Parser
         self::LOCALE_ES => 'S',
         self::LOCALE_XX => 'X'
     ];
+    
+    private $removeAccentFactory;
+    
+    public function __construct(RemoveAccentFactory $removeAccentFactory)
+    {
+        $this->removeAccentFactory = $removeAccentFactory;
+    }
 
     /**
      * @param string $string
@@ -48,17 +55,9 @@ class Parser
      */
     private function removeAccents($string, $locale)
     {
-        if ($locale !== self::LOCALE_ES) {
-            return $string;
-        }
-
-        $originalChars = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
-        $editedChars = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
-        $string = utf8_decode($string);
-        $string = strtr($string, utf8_decode($originalChars), $editedChars);
-        $string = strtolower($string);
-
-        return utf8_encode($string);
+        $removeAccent = $this->removeAccentFactory->create($locale);
+        
+        return $removeAccent->parse($string);
     }
 
     /**
