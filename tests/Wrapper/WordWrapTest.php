@@ -21,6 +21,6 @@ class WordWrapTest extends TestCase
     public function wrap_words_with_spaces()
     {
         $wrapper = new WrapWord();
-        $this->assertEquals('hola\nmund\no', $wrapper->wrap('hola mundo', 7));
+        $this->assertEquals('hola\nmundo', $wrapper->wrap('hola mundo', 7));
     }
 }

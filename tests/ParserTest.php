@@ -2,8 +2,8 @@
 
 namespace App\Tests;
 
-use App\Classes\Parser;
-use App\Classes\RemoveAccentFactory;
+use App\Parser\Parser;
+use App\Parser\RemoveAccentFactory;
 use PHPUnit\Framework\TestCase;
 
 class ParserTest extends TestCase
