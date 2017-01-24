@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes;
+namespace App\Parser;
 
 
 class RemoveAccentXX implements RemoveAccentInterface

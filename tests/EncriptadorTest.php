@@ -3,14 +3,14 @@ namespace App\Tests;
 
 class EncriptadorTest extends \PHPUnit\Framework\TestCase
 {
-    /** @var  \App\Classes\Encriptador */
+    /** @var  \App\Encriptor\Encriptador */
     private $encriptor;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->encriptor = new \App\Classes\Encriptador();
+        $this->encriptor = new \App\Encriptor\Encriptador();
     }
 
     /**

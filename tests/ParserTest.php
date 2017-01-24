@@ -43,28 +43,6 @@ class ParserTest extends TestCase
     /**
      * @test
      */
-    public function removes_accents_from_words_for_locale_es()
-    {
-        $this->assertEquals(
-            'COCINERO',
-            $this->parser->parse('cócinero', Parser::LOCALE_ES)[0]
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function removes_accents_from_words_for_locale_xx()
-    {
-        $this->assertEquals(
-            'CÓCINERO',
-            $this->parser->parse('cócinero', Parser::LOCALE_XX)[0]
-        );
-    }
-
-    /**
-     * @test
-     */
     public function removes_plural_endings_from_words_for_locale_es()
     {
         $this->assertEquals(
