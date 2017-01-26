@@ -2,7 +2,8 @@
     "name": "ahajji/encriptor-php",
     "type": "project",
     "require": {
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^5.7",
+        "codacy/coverage": "^1.0"
     },
     "authors": [
         {
