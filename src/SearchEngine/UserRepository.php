@@ -2,13 +2,14 @@
 
 namespace App\SearchEngine;
 
-
-use App\SearchEngine\User;
-
 class UserRepository implements UserRepositoryInterface
 {
     private $data;
 
+    /**
+     * @param string $location
+     * @return array
+     */
     public function findByLocation($location)
     {
         $result = [];
@@ -22,6 +23,10 @@ class UserRepository implements UserRepositoryInterface
         return $result;
     }
 
+    /**
+     * @param User $user
+     * @return $this
+     */
     public function save(User $user)
     {
         $this->data[] = $user;

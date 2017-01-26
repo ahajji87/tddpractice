@@ -1,15 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ahajji
- * Date: 1/24/17
- * Time: 4:53 PM
- */
 namespace App\SearchEngine;
 
 interface UserRepositoryInterface
 {
+    /**
+     * @param string $location
+     * @return User[]
+     */
     public function findByLocation($location);
 
+    /**
+     * @param User $user
+     * @return self
+     */
     public function save(User $user);
 }
