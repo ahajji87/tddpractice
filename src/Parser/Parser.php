@@ -6,7 +6,6 @@ class Parser
 {
     const LOCALE_ES = 'es';
     const LOCALE_XX = 'xx';
-    
     const PLURAL_ENDING = [
         self::LOCALE_ES => 'S',
         self::LOCALE_XX => 'X'

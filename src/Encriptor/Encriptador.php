@@ -41,10 +41,8 @@ class Encriptador
 
         $newWord = "";
 
-        for ($i = 1; $i < count($wordArray) -1; $i++)
-        {
-            for ($j = 1; $j < count($replacement) -1; $j++)
-            {
+        for ($i = 1; $i < count($wordArray) -1; $i++) {
+            for ($j = 1; $j < count($replacement) -1; $j++) {
                 $newWord = $newWord . $this->encryptPartialy($replacement[$j], $wordArray[$i]);
             }
         }
