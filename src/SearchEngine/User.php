@@ -46,14 +46,6 @@ class User
     }
 
     /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * @param mixed $name
      */
     public function setName($name)
