@@ -21,6 +21,7 @@
             <directory suffix=".php">./src/</directory>
             <exclude>
                 <directory suffix="Interface.php">../application/</directory>
+                <directory suffix="Repository.php">../application/</directory>
             </exclude>
         </whitelist>
     </filter>
