@@ -40,11 +40,12 @@ class Encriptador
         $replacement = $this->getCharsArrayForWord($charsToReplace);
 
         $newWord = "";
+
         for ($i = 1; $i < count($wordArray) -1; $i++)
         {
             for ($j = 1; $j < count($replacement) -1; $j++)
             {
-                $newWord = $this->encryptPartialy($replacement[$j], $wordArray[$i], $newWord);
+                $newWord = $newWord . $this->encryptPartialy($replacement[$j], $wordArray[$i]);
             }
         }
 
@@ -114,16 +115,15 @@ class Encriptador
     /**
      * @param string $replacement
      * @param string $word
-     * @param string $newWord
      * @return string
      */
-    private function encryptPartialy($replacement, $word, $newWord)
+    private function encryptPartialy($replacement, $word)
     {
         if ($replacement == $word) {
             $charValue = ord($word);
-            return $newWord . chr($charValue + 2);
+            $word = chr($charValue + 2);
         }
 
-        return $newWord . $word;
+        return $word;
     }
 }
