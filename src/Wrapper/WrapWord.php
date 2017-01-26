@@ -7,11 +7,9 @@ class WrapWord
     public function wrap($string, $number)
     {
         if (strpos($string, ' ') !== false) {
-            $result = wordwrap($string, $number, '\n');
-        } else {
-            $result = wordwrap($string, $number, '\n', true);
+            return wordwrap($string, $number, '\n');
         }
 
-        return $result;
+        return wordwrap($string, $number, '\n', true);
     }
 }

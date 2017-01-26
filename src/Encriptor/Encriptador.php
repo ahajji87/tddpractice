@@ -46,10 +46,10 @@ class Encriptador
             {
                 if ($replacement[$j] == $wordArray[$i]) {
                     $charValue = ord($wordArray[$i]);
-                    $newWord = $newWord . chr($charValue + 2);
-                } else {
-                    $newWord = $newWord . $wordArray[$i];
+                    return $newWord . chr($charValue + 2);
                 }
+
+                $newWord = $newWord . $wordArray[$i];
             }
         }
 
