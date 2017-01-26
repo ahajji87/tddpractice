@@ -48,6 +48,14 @@ class User
     /**
      * @param mixed $name
      */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
     public function setName($name)
     {
         $this->name = $name;
