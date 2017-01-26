@@ -13,6 +13,10 @@ class UserRepositoryInMemory implements UserRepositoryInterface
         }
     }
 
+    /**
+     * @param string $location
+     * @return array
+     */
     public function findByLocation($location)
     {
         $result = [];
@@ -26,6 +30,10 @@ class UserRepositoryInMemory implements UserRepositoryInterface
         return $result;
     }
 
+    /**
+     * @param User $user
+     * @return $this
+     */
     public function save(User $user)
     {
         $this->data[] = $user;

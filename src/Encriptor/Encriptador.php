@@ -6,6 +6,10 @@ use Exception;
 
 class Encriptador
 {
+    /**
+     * @param string $word
+     * @return string
+     */
     public function cryptWord($word)
     {
         $this->validateWord($word);
@@ -14,6 +18,10 @@ class Encriptador
         return $this->crypt($this->getCharCrypter(), $wordArray);
     }
 
+    /**
+     * @param string $word
+     * @return string
+     */
     public function cryptWordToNumbers($word)
     {
         $this->validateWord($word);
@@ -25,6 +33,10 @@ class Encriptador
         return $this->crypt($function, $wordArray);
     }
 
+    /**
+     * @param string $word
+     * @return string
+     */
     public function cryptSentence($word)
     {
         $wordArray = $this->getCharsArrayForWord($word);
@@ -32,6 +44,11 @@ class Encriptador
         return $this->crypt($this->getCharCrypter(), $wordArray);
     }
 
+    /**
+     * @param string $word
+     * @param string $charsToReplace
+     * @return string
+     */
     public function cryptWordPartially($word, $charsToReplace)
     {
         $this->validateWord($word);
@@ -50,17 +67,23 @@ class Encriptador
         return $newWord;
     }
 
+    /**
+     * @param string $sentence
+     * @return array
+     */
     public function getWords($sentence)
     {
         return explode(" ", $sentence);
     }
 
+    /**
+     * @param string $sentence
+     */
     public function printWords($sentence)
     {
         $words = $this->getWords($sentence);
-        for ($i = 0; $i < count($words); $i++)
-        {
-            echo "<" . $words[$i] . ">";
+        foreach ($words as $word) {
+            echo "<" . $word . ">";
         }
     }
 

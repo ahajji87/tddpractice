@@ -10,7 +10,6 @@ class Parser
         self::LOCALE_ES => 'S',
         self::LOCALE_XX => 'X'
     ];
-    
     private $removeAccentFactory;
     
     public function __construct(RemoveAccentFactory $removeAccentFactory)
