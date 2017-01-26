@@ -1,16 +1,19 @@
 <?php
 namespace App\Tests;
 
-class EncriptadorTest extends \PHPUnit\Framework\TestCase
+use App\Encriptor\Encriptador;
+use PHPUnit\Framework\TestCase;
+
+class EncriptadorTest extends TestCase
 {
-    /** @var  \App\Encriptor\Encriptador */
+    /** @var  Encriptador */
     private $encriptor;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->encriptor = new \App\Encriptor\Encriptador();
+        $this->encriptor = new Encriptador();
     }
 
     /**
