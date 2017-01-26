@@ -44,12 +44,7 @@ class Encriptador
         {
             for ($j = 1; $j < count($replacement) -1; $j++)
             {
-                if ($replacement[$j] == $wordArray[$i]) {
-                    $charValue = ord($wordArray[$i]);
-                    return $newWord . chr($charValue + 2);
-                }
-
-                $newWord = $newWord . $wordArray[$i];
+                $newWord = $this->encryptPartialy($replacement[$j], $wordArray[$i], $newWord);
             }
         }
 
@@ -114,5 +109,21 @@ class Encriptador
         return function ($response, $charValue) {
             return $response . chr($charValue + 2);
         };
+    }
+
+    /**
+     * @param string $replacement
+     * @param string $word
+     * @param string $newWord
+     * @return string
+     */
+    private function encryptPartialy($replacement, $word, $newWord)
+    {
+        if ($replacement == $word) {
+            $charValue = ord($word);
+            return $newWord . chr($charValue + 2);
+        }
+
+        return $newWord . $word;
     }
 }
