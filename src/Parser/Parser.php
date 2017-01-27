@@ -6,7 +6,7 @@ class Parser
 {
     const LOCALE_ES = 'es';
     const LOCALE_XX = 'xx';
-    const PLURAL_ENDING = [
+    private $pluralEndings = [
         self::LOCALE_ES => 'S',
         self::LOCALE_XX => 'X'
     ];
@@ -60,10 +60,11 @@ class Parser
 
     /**
      * @param string $word
-     * @return array
+     * @param string $locale
+     * @return string
      */
     private function toSingle($word, $locale)
     {
-        return rtrim($word, self::PLURAL_ENDING[$locale]);
+        return rtrim($word, $this->pluralEndings[$locale]);
     }
 }
