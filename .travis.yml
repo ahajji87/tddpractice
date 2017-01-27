@@ -1,18 +1,16 @@
 # .travis.yml
 language: php
 php:
-  - 5.3
-  - 5.4
-  - 5.5
-  - 5.6
-  - hhvm
+  - '5.6'
+  - '7.0'
+  - '7.1'
 
 before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install -n
 
 script:
-  - php vendor/bin/phpunit
+  - php bin/phpunit --coverage-xml=build/coverage-xml
 
 after_script:
-  - php vendor/bin/codacycoverage phpunit build/coverage-xml
+  - php bin/codacycoverage phpunit build/coverage-xml
