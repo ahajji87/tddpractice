@@ -16,5 +16,8 @@
             "App\\": "src/",
             "App\\Tests\\": "tests/"
         }
+    },
+    "config": {
+        "bin-dir": "bin"
     }
 }
